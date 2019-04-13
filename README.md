@@ -1,9 +1,12 @@
 # README
 
-#### Crawl word list from shanbay.com
+- #### Crawl word list from shanbay.com
 
-#### Participle/StopWords/Lemmatizer using nltk
+- #### Participle/StopWords/Lemmatizer using nltk
 
-#### Match toefl words from text
+- #### Match [~toefl] words from text
 
-#### like shit
+- #### Tutorial
+    - put your text in ./src/reading.txt file
+    - run main.py
+    - the result will be displayed in result.csv
