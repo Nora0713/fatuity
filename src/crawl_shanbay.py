@@ -2,7 +2,6 @@
 from bs4 import BeautifulSoup
 import requests
 import csv
-import bs4
 import codecs
 
 
@@ -71,6 +70,7 @@ def save_contents(result):
                     print("write in line:", i)
             except:
                 print("error in line:{}, contents is:{}".format(i, result[i]))
+
 
 def main():
     src_url = "https://www.shanbay.com/wordbook/5440/"

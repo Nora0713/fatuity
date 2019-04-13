@@ -10,3 +10,6 @@
     - put your text in ./src/reading.txt file
     - run main.py
     - the result will be displayed in result.csv
+
+- #### env
+    - python3

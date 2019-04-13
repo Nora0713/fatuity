@@ -2,10 +2,6 @@ import pandas as pd
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
-import csv
-
-
-# import numpy
 
 
 def read_text(path):
