@@ -3,6 +3,8 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 import csv
+
+
 # import numpy
 
 
@@ -50,18 +52,31 @@ def get_toefl_list():
     # with open("shanbay.csv", 'rb') as csvfile:
     #     reader = csv.reader(csvfile)
     #     toefl_list = [row[0] for row in reader]
-    df_disease = pd.read_csv("shanbay.csv")
-    toefl_list = df_disease["word"].tolist()
+    df = pd.read_csv("shanbay.csv")
+    toefl_list = df["word"].tolist()
     print("get_toefl_list", len(toefl_list))
     return toefl_list
 
 
 def map_toefl_words(toefl_list, text_list):
-    file_handle = open('output.txt', mode='w')
     intersection = [i for i in toefl_list if i in text_list]
-    print(len(intersection))
-    for word in intersection:
-        file_handle.write(word+"\n")
+    new_list = list(set(intersection))
+    new_list.sort(key=intersection.index)
+    print("map_toefl_words", len(intersection))
+    return intersection
+
+
+def get_meanings(list):
+    df = pd.read_csv("shanbay.csv")
+    df_filter = df.loc[(df["word"].isin(list))]
+    df_filter.to_csv("result.csv")
+    print(df_filter)
+
+
+def print_list(list):
+    file_handle = open('output.txt', mode='w')
+    for word in list:
+        file_handle.write(word + "\n")
 
 
 def main():
@@ -70,7 +85,9 @@ def main():
     list = spilt_words(text)
     prototype_list = words_prototype(list)
     after_clean_list = stop_words(prototype_list)
-    map_toefl_words(get_toefl_list(), after_clean_list)
+    map_list = map_toefl_words(get_toefl_list(), after_clean_list)
+    get_meanings(map_list)
+    # print_list(map_list)
 
 
 if __name__ == '__main__':
